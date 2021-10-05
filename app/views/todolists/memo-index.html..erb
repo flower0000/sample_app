@@ -1,0 +1,33 @@
+<div class="list-wrap">
+<% @lists.each do |list| %>
+ <div class="list-box">
+   <%= attachment_image_tag list, :image, :fill,200,200,format: 'jpeg' %>
+   <div class="list-comment">
+    <span class="list-body"><%= list.body %></span>
+    <span class="list-title"><%=link_to list.title, todolist_path(list.id) %></span>
+   </div>
+ </div>
+<% end %>
+</div>
+
+
+<h1>投稿一覧</h1>
+<% @lists.each do |list| %>
+<!-- 列がもつ要素を順番に取得して処理を実行したいときは、eachメソッドを使います。 -->
+<!-- @lists.eachでListレコードの数だけ繰り返し処理が行われる -->
+<!-- ローカル変数のlistには一行分のデータが入っている。その中でlink_toの後ろでlistの中でtitle部分を表示させたい -->
+<!-- idカラム名は作成していない。投稿順に割り振られていく -->
+
+
+<!--title←これカラム名-->
+
+ <p>タイトル</p>
+ <span>
+  <%= link_to list.title, todolist_path(list.id) %>
+<!-- list.titleと記述することでlistに代入された1レコード分のデータのカラム名：titleのデータが抜き出されて表示される -->
+<!-- ひな形:　link_to 表示されるテキスト,"リンク先URL[,オプション]"　-->
+ </span>
+ <p>画像</p>
+ <%= attachment_image_tag list, :image, :fill,100,100,format: 'jpeg' %>
+ <!-- 画像の幅を:fillで指定し、高さをpxで指定。表示する画像の拡張子をformatで指定 -->
+<% end %>

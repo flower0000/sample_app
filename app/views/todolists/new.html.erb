@@ -1,0 +1,23 @@
+<h1>新規投稿</h1>
+<!--form_with部分-->
+<%= form_with model:@list, url:'/todolists', local:true do |f| %>
+
+ <h4>タイトル</h4>
+ <%= f.text_field:title %>
+ <!-- 入力欄 -->
+ <!-- listテーブルの中のもの。titleはカラム名 -->
+
+ <h4>本文</h4>
+ <%= f.text_area :body %>
+ <!--f.text_fieldとの違いは中に書き込める字数の違い-->
+ <!-- listテーブルの中のもの。bodyはカラム名-->
+
+ <h4>画像</h4>
+ <%= f.attachment_field :image %>
+
+ <%= f.submit '投稿' %>
+ <!-- submitを押すとどこに飛ぶかというとurlのtodolistsにとぶ。
+ formで指定されているときは自動的にroute.rbのPOSTにとぶ。
+ -->
+
+<% end %>

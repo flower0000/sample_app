@@ -1,0 +1,12 @@
+<h2>タイトル</h2>
+<p><%= @list.title %></p>
+<!-- コントローラーのshowアクションから，@listを受け取っている -->
+<h2>本文</h2>
+<p><%= @list.body %></p>
+<h2>画像</h2>
+<%= attachment_image_tag @list, :image, :fill, 300, 300, format: 'jpeg' %>
+
+<%= link_to "編集", edit_todolist_path(@list.id) %>
+<%= link_to"削除",destroy_todolist_path(@list.id),method: :delete,"data-confirm" => "本当に削除しますか？" %>
+<!-- link_toでHTTPメソッドを指定する場合 -->
+<!-- link_to '表示するテキスト',URL, method: :HTTPメソッド -->
